@@ -1,149 +1,25 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-  <title>ชาละมุนแม่สลอง</title>
-
-  <meta
-    name="description"
-    content="ชาละมุนแม่สลอง - Tea & Dried Flowers">
-
-  <!--
-    ส่งต่อไปยัง Google Apps Script Web App
-  -->
-
-  <meta
-    http-equiv="refresh"
-    content="0; url=https://script.google.com/macros/s/AKfycbya0fnz8p_H2mTxpOpK4D6vP93yXvy1nqCJUQ3tq-8S_xPgb6ZfNScdwaUVnqMme0J0/exec">
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      font-family:
-        Arial,
-        "Noto Sans Thai",
-        sans-serif;
-      background: #39452a;
-    }
-
-    .redirect-page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      text-align: center;
-      color: #ffffff;
-    }
-
-    .redirect-box {
-      max-width: 420px;
-    }
-
-    .logo {
-      font-size: 54px;
-      margin-bottom: 15px;
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: 28px;
-    }
-
-    p {
-      margin: 8px 0;
-      line-height: 1.7;
-      opacity: 0.85;
-    }
-
-    .loading {
-      margin: 25px auto;
-      width: 42px;
-      height: 42px;
-      border: 4px solid rgba(255,255,255,0.25);
-      border-top-color: #ffffff;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    .enter-button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 25px;
-      border-radius: 30px;
-      background: #ffffff;
-      color: #39452a;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    @keyframes spin {
-
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-
-    }
-
-  </style>
-
+    <meta charset="UTF-8">
+    <title>GitHub + Google Apps Script</title>
 </head>
-
-
 <body>
+    <h1>เชื่อมต่อ Google Apps Script สำเร็จ</h1>
+    <button id="loadBtn">โหลดข้อมูล</button>
+    <p id="result"></p>
 
-  <main class="redirect-page">
+    <script>
+        const WEB_APP_URL = "ใส่_Web_App_URL_ของ_Google_Apps_Script_ที่นี่";
 
-    <div class="redirect-box">
-
-      <div class="logo">
-        🍃
-      </div>
-
-      <h1>
-        ชาละมุนแม่สลอง
-      </h1>
-
-      <p>
-        Tea & Dried Flowers
-      </p>
-
-      <div class="loading"></div>
-
-      <p>
-        กำลังเข้าสู่เว็บไซต์...
-      </p>
-
-      <a
-        class="enter-button"
-        href="https://script.google.com/macros/s/AKfycbya0fnz8p_H2mTxpOpK4D6vP93yXvy1nqCJUQ3tq-8S_xPgb6ZfNScdwaUVnqMme0J0/exec">
-        เข้าสู่เว็บไซต์
-      </a>
-
-    </div>
-
-  </main>
-
+        document.getElementById("loadBtn").addEventListener("click", () => {
+            fetch(WEB_APP_URL)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("result").innerText = data.message;
+                })
+                .catch(error => console.error("Error:", error));
+        });
+    </script>
 </body>
-
 </html>
